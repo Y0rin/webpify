@@ -1,0 +1,11 @@
+# personal settings (folders, window size, theme) - each user gets their own
+settings.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# test output
+*.webp
