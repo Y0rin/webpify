@@ -3,7 +3,16 @@
 Batch-converts a folder of `.png` images to `.webp` (quality 82, transparency kept).
 It trims empty transparent edges and works out the right size on its own.
 
-## Install
+## Quick start (no install)
+
+Download **`WebPify.exe`** from the
+[latest release](https://github.com/Y0rin/webpify/releases/latest) and double-click it.
+No Python needed.
+
+Windows may show "Windows protected your PC" the first time, because the app isn't
+code-signed. Click **More info → Run anyway**.
+
+## Install from source
 
 0. Get the files: on GitHub click **Code → Download ZIP** and unzip it, or run
    ```
@@ -66,6 +75,11 @@ trimmed size, final size and KB before/after. **Open** opens the output folder i
 
 Press `Esc` or click outside the panel to close it. Your last folders, options, theme,
 text size and window size (including maximised) are remembered in `settings.json`.
+
+## Build the .exe yourself
+
+Double-click **`build_exe.bat`**. It installs PyInstaller and creates `dist\WebPify.exe`.
+The .exe stores its settings in `%APPDATA%\WebPify\settings.json`.
 
 ## Run from the command line
 

@@ -7,5 +7,10 @@ __pycache__/
 .venv/
 venv/
 
+# PyInstaller build output (the .exe goes on the GitHub release instead)
+build/
+dist/
+*.spec
+
 # test output
 *.webp

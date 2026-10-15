@@ -4,6 +4,7 @@ import ctypes
 import json
 import os
 import queue
+import sys
 import threading
 import time
 import tkinter as tk
@@ -18,8 +19,12 @@ try:
 except ImportError:
     sv_ttk = None
 
-SETTINGS = Path(__file__).with_name("settings.json")
 ASSETS = Path(__file__).with_name("assets")
+if getattr(sys, "frozen", False):
+    # Packaged .exe: code runs from a temp folder, so keep settings in AppData
+    SETTINGS = Path(os.environ.get("APPDATA", Path.home())) / "WebPify" / "settings.json"
+else:
+    SETTINGS = Path(__file__).with_name("settings.json")
 TEXT_MIN, TEXT_MAX, TEXT_STEP = 80, 200, 10
 
 
@@ -34,6 +39,7 @@ def save_settings(changes: dict) -> None:
     """Merge changes into settings.json."""
     try:
         data = {**load_settings(), **changes}
+        SETTINGS.parent.mkdir(parents=True, exist_ok=True)
         SETTINGS.write_text(json.dumps(data, indent=2), encoding="utf-8")
     except OSError:
         pass
